@@ -1,44 +1,8 @@
 @charset "utf-8";
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-} 
-@font-face {
-    font-family: 'KCCChassam';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-* {
-    margin: 0;
-    padding: 0;
-}
-li {
-    list-style: none;
-}
-a {
-    text-decoration: none;
-    color: inherit;
-}
-body {
-    color: #333;
-    font-family: 'Pretendard-Regular';
-    overflow-x: hidden;
-    /* 가로 스크롤바 없애기 */
-}
+@import url('reset.css');
+@import url('common.css');
 
-.mobile {
-    display: none;
-}
-/* header */
-header .inner {
-    max-width: 1600px;
-    width: 95%;
-    margin: 0 auto;
-}
- 
+
  
 header .inner .hd_bottom {
     height: 100px;
@@ -109,8 +73,7 @@ header .pc .gnb .depth01 .depth02 li {
 .main_visual div p {
     font-size: 25px;
     margin-bottom: 10px;
-}
-.main_visual div span {}
+} 
 .main_visual div a {
     width: 150px;
     height: 45px;
@@ -199,22 +162,77 @@ header .pc .gnb .depth01 .depth02 li {
     font-weight: bold;
     margin-right: 10px;
 }
-/* header , .main_visual, 
-.best에 대한 미디어쿼리 */
+
+.brand {
+    padding: 150px 0;
+    background-color: #fdf9ef;
+}
+.brand .inner {
+    max-width: 1600px;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.brand .inner .title {
+    width: 500px;
+}
+.brand .inner .title h3 {
+    font-size: 50px;
+}
+.brand .inner .title p {
+    font-size: 30px;
+    margin: 50px 0 100px;
+}
+.brand .inner .title a {
+    width: 140px;
+    height: 45px;
+    border: 1px solid #333;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+
+}
+
+.brand .inner .list {
+    width: calc(100% - 500px);
+    display: flex;
+    justify-content: space-between;
+}
+.brand .inner .list .item {
+    width: calc(100% / 2 - 10px);
+    height: 395px;
+    position: relative;
+}
+.brand .inner .list .item figure {
+    width: 100%;
+    height: 100%;
+}
+.brand .inner .list .item figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.brand .inner .list .item div {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+}
+.brand .inner .list .item div h4 {
+    font-size: 30px;
+    margin-bottom: 20px;
+} 
+footer {
+    background-color: #bb181d;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+
 @media all and (max-width:1024px) {
-    header .pc {display: none;}
-    header div.mobile {
-        display: flex;
-        align-items: center;
-        font-size: 40px;
-        color: #bb181d;
-
-    }
-    header i.mobile span {
-        position: absolute;
-        left: -999999px;
-    }
-
+   
     .best {
         margin: 100px auto;
     }
@@ -224,8 +242,51 @@ header .pc .gnb .depth01 .depth02 li {
     .best .list .item .text h4 {
         height: 50px;
     }
-
-
+    .brand .inner .title {
+        width: 250px;
+    }
+    .brand .inner .list {
+        width: calc(100% - 250px);
+    }
+    .brand {
+        margin: 100px 0;
+    }
+    .brand .inner {
+        display: block;
+    }
+    .brand .inner .title {
+        width: 100%;
+        margin-bottom: 30px; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .brand .inner .title h3 {
+        font-size: 30px;
+    }
+    .brand .inner .title p {
+        margin: 25px 0 0;
+        font-size: 16px;
+    }
+    .brand .inner .title p br {
+        display: none;
+    }
+ 
+    .brand .inner .list {
+        width: 100%;
+    }
+    .brand .inner .list .item {
+        width: calc(100% / 2 - 5px);
+        height: 50vw;
+    }
+    .brand .inner .list .item div {
+        left: 20px;
+        bottom: 20px;
+    }
+    .brand .inner .list .item div h4 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
 }/* 1024px 이하 */
 
 @media all and (max-width:767px) {
@@ -279,20 +340,17 @@ header .pc .gnb .depth01 .depth02 li {
         margin-left: 0;
         margin-right: 20px;
     }
-    /* 아이템한테 width값을 
-    2나누고 5뺀값 */
+    
     .best .list .item {
         width: calc(100% / 2 - 5px);
     }
-    /* + 바로뒤에 오는 아이템만!(형제선택자)
-       ~ 뒤에 오는 아이템들(형제선택자) */
+     
     .best .list .item:nth-child(2) ~ .item {
         display: none;
     }
     .best .list .item figure {
         height: 50vw;
-        /* vw -> 브라우저 너비 반응
-        vh -> 브라우저 높이 반응 */
+       
     }
 }/* 767px 이하 */
 
@@ -306,157 +364,7 @@ header .pc .gnb .depth01 .depth02 li {
         margin: 10px 0 20px;
     }
     .best .list .item .text .price {font-size: 16px;}
-}/* 414px 이하 */
 
-
-/* .slide_text 텍스트 애니메이션 */
-.slide_text {
-    background-color: #bb181d;
-    color: #fff;
-    padding: 20px 0;
-    overflow-x: hidden;
-}
-.slide_text ul {
-    
-    white-space: nowrap;
-    /* 텍스트 한줄로 만들어줌 */
-    /* 애니메이션 : 이름 시간 횟수 속도 */
-    animation: slidetext 60s infinite linear;
-}
-@keyframes slidetext {
-    /* 시작 */
-    0% {
-        transform: translateX(0);
-    }
-    /* 끝 */
-    100% {
-        transform: translateX(-100%);
-    }
-}
-.slide_text ul li {
-    display: inline-block;
-}
-
-/* .brand pc 부터 시작 */
-.brand {
-    padding: 150px 0;
-    background-color: #fdf9ef;
-}
-.brand .inner {
-    max-width: 1600px;
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-.brand .inner .title {
-    width: 500px;
-}
-.brand .inner .title h3 {
-    font-size: 50px;
-}
-.brand .inner .title p {
-    font-size: 30px;
-    margin: 50px 0 100px;
-}
-.brand .inner .title a {
-    width: 140px;
-    height: 45px;
-    border: 1px solid #333;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-/*     text-align: center;
-    line-height: 45px; */
-    /* 가로: 140
-    세로: 45
-    테두리: 두께 스타일 컬러값
-    모서리곡선 : 
-    텍스트 가운데 정렬, 수직 가운데 정렬 */
-
-}
-
-.brand .inner .list {
-    width: calc(100% - 500px);
-    display: flex;
-    justify-content: space-between;
-}
-.brand .inner .list .item {
-    width: calc(100% / 2 - 10px);
-    height: 395px;
-    position: relative;
-}
-.brand .inner .list .item figure {
-    width: 100%;
-    height: 100%;
-}
-.brand .inner .list .item figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.brand .inner .list .item div {
-    position: absolute;
-    left: 50px;
-    bottom: 50px;
-}
-.brand .inner .list .item div h4 {
-    font-size: 30px;
-    margin-bottom: 20px;
-} 
-@media all and (max-width:1280px) {
-    .brand .inner .title {
-        width: 250px;
-    }
-    .brand .inner .list {
-        width: calc(100% - 250px);
-    }
-}
-
-@media all and (max-width:1024px) {
-    .brand {
-        margin: 100px 0;
-    }
-    .brand .inner {
-        display: block;
-    }
-    .brand .inner .title {
-        width: 100%;
-        margin-bottom: 30px; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .brand .inner .title h3 {
-        font-size: 30px;
-    }
-    .brand .inner .title p {
-        margin: 25px 0 0;
-        font-size: 16px;
-    }
-    .brand .inner .title p br {
-        display: none;
-    }
- 
-    .brand .inner .list {
-        width: 100%;
-    }
-    .brand .inner .list .item {
-        width: calc(100% / 2 - 5px);
-        height: 50vw;
-    }
-    .brand .inner .list .item div {
-        left: 20px;
-        bottom: 20px;
-    }
-    .brand .inner .list .item div h4 {
-        font-size: 22px;
-        margin-bottom: 10px;
-    }
-}
-
-@media all and (max-width:414px) {
     .brand {
         margin: 50px 0;
     }
@@ -471,18 +379,9 @@ header .pc .gnb .depth01 .depth02 li {
     .brand .inner .list .item div h4 {
         font-size: 18px;
     }
-}
-/* 414px 이하일 때 */
-/* .brand 위 아래 여백 50px
-.brand .item들의 
-width값 100%로
-하여 세로로 나열
 
-아이템 아래쪽으로 여백 15px만큼 띄우기 */
+}/* 414px 이하 */
+ 
+ 
+ 
 
-footer {
-    background-color: #bb181d;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
